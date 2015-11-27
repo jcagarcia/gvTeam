@@ -54,9 +54,6 @@ var DAGame = (function() {
 	*/
 	DAGame.prototype.create = function() {
 
-		// Cremos grupo de developers
-		this.grpDevelopers = this.game.add.group();
-
 		// Creamos oficina
 		this.office = new DAOffice(this.game);
 		// Creamos el suelo de la oficina
@@ -64,7 +61,7 @@ var DAGame = (function() {
 
 		// Creando el diseñador
 		this.designer = new DADesigner(this.game, this.cursors);
-
+		
 		// Creando el programador
 		this.arrDevelopers.push(new DADeveloper(this.game, 125, 300, "char_developer_01"));
 		this.arrDevelopers.push(new DADeveloper(this.game, 200, 400, "char_developer_01"));
@@ -81,6 +78,9 @@ var DAGame = (function() {
 
 		// Moviendo el diseñador a velocidad 3
 		this.designer.moveDesigner(3);
+
+		// Añadiendo collide entre diseñadores y programadores
+		this.game.physics.arcade.collide(this.arrDevelopers[0].developer, this.designer);
 
 	}
 

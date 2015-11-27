@@ -6,6 +6,9 @@ var DADeveloper = (function() {
 		// Guardando game
 		this.game = phaserGame;
 
+		// Creando variable developer
+		this.developer = undefined;
+
 		// Guardamos la posicion original
 		this.posX = posX;
 		this.posY = posY;
@@ -31,6 +34,9 @@ var DADeveloper = (function() {
 		this.developer.animations.add("left", [8,9,10,11], 10, true);
 		this.developer.animations.add("down", [12,13,14,15], 10, true);
 
+		this.game.physics.arcade.enable(this.developer);
+		this.developer.enableBody = true;
+		this.developer.body.collideWorldBounds = true;
 	}
 	
 	// Generando ruta 1 programador 
