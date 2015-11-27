@@ -32,7 +32,15 @@ var DADeveloper = (function() {
 		this.developer.animations.add("down", [12,13,14,15], 10, true);
 
 	}
+	
+	// Generando ruta 1 programador 
+	DADeveloper.prototype.moveDeveloperToXY = function(finalPosX, finalPosY, directionalAxis) {
+		initialPosX = this.posX;
+		initialPosY = this.posY;
+		
+		this.game.physics.arcade.moveToXY(this.developer, finalPosX, finalPosY);
 
+	}
 
 	return DADeveloper;
 
