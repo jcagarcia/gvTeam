@@ -34,7 +34,7 @@ var DAGame = (function() {
 	DAGame.prototype.preload = function() {
 		
 		// Cargando floor asset
-		this.game.load.spritesheet('floor_01', 'static/assets/images/floors/floor_01.png', 32, 32);
+		this.game.load.image('floor_black', 'static/assets/images/floors/floor_black.jpg');
 		
 		// Cargando character assets
 		this.game.load.spritesheet('char_designer', 'static/assets/images/characters/char_designer.png', 32, 48);
@@ -49,7 +49,20 @@ var DAGame = (function() {
 	DAGame.prototype.create = function() {
 
 		// Creamos oficina y mobiliario
-		this.game.add.sprite(0, 0, 'floor_01');
+		// Creamos suelo
+		var floorWidth = 0;
+		var floorHeight = 0;
+		while(floorWidth < GAME_WIDTH){
+
+			floorHeight = 0;
+
+			while(floorHeight < GAME_HEIGHT) {
+				this.game.add.sprite(floorWidth, floorHeight, 'floor_black');
+				floorHeight += 32;
+			}
+			
+			floorWidth += 32;
+		}
 
 		// Creando el diseñador
 		this.designer = new DADesigner(this.game, this.cursors);

@@ -21,7 +21,7 @@ var DADesigner = (function() {
 	*/
 	DADesigner.prototype.createDesigner = function(){
 		this.designer = this.game.add.sprite(32, 32, 'char_designer');
-		this.designer.scale.setTo(1.5,1.5);
+		this.designer.scale.setTo(2,2);
 
 		// Añadimos animaciones
 		this.designer.animations.add("up", [0,1,2,3], 10, true);
