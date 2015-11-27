@@ -9,15 +9,8 @@ var DADesigner = (function() {
 		// Guardando cursores
 		this.cursors = cursors;
 
-		// TODO: Crear diseñador usando assets
-
-		this.designer = phaserGame.add.graphics(100, 100);
-	    
-	    // dibuja al diseñador
-	    this.designer.lineStyle(0);
-	    this.designer.beginFill(0xFFFF0B, 0.5);
-	    this.designer.drawCircle(0, 0, 50);
-	    this.designer.endFill();
+		// Añadir sprite
+		this.designer = phaserGame.add.sprite(32, 32, 'char_designer');
 
 	    window.graphics = this.designer;
 	}
