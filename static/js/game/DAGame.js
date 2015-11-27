@@ -9,6 +9,9 @@ var DAGame = (function() {
 		// Creando variable para el diseñador
 		this.designer = undefined;
 
+		// Creando variable para la oficina
+		this.office = undefined;
+
 		// Creando array de programadores
 		this.arrDevelopers = [];
 		
@@ -48,21 +51,10 @@ var DAGame = (function() {
 	*/
 	DAGame.prototype.create = function() {
 
-		// Creamos oficina y mobiliario
-		// Creamos suelo
-		var floorWidth = 0;
-		var floorHeight = 0;
-		while(floorWidth < GAME_WIDTH){
-
-			floorHeight = 0;
-
-			while(floorHeight < GAME_HEIGHT) {
-				this.game.add.sprite(floorWidth, floorHeight, 'floor_wood');
-				floorHeight += 32;
-			}
-			
-			floorWidth += 32;
-		}
+		// Creamos oficina
+		this.office = new DAOffice(this.game);
+		// Creamos el suelo de la oficina
+		this.office.createFloor();
 
 		// Creando el diseñador
 		this.designer = new DADesigner(this.game, this.cursors);
