@@ -9,8 +9,13 @@ var DADesigner = (function() {
 		// Guardando cursores
 		this.cursors = cursors;
 
+		// Creando variable diseñador
+		this.designer = undefined;
+
 		// Generando diseñador
 		this.createDesigner();
+
+		
 	}
 
 
@@ -61,6 +66,17 @@ var DADesigner = (function() {
 		} else { // Si no se mueve, parar la animación
 			this.designer.animations.stop();	
 		}
+	}
+
+	/**
+	* Método que intenta matar al diseñador dependiendo de las vidas que tenga
+	*/
+	DADesigner.prototype.tryToKill = function(designer, developer) {
+
+		// En primer lugar marcamos como golpeado al diseñador
+		designer.tint = 0xE41937;
+		
+
 	}
 
 

@@ -63,9 +63,11 @@ var DAGame = (function() {
 		this.designer = new DADesigner(this.game, this.cursors);
 		
 		// Creando el programador
-		this.arrDevelopers.push(new DADeveloper(this.game, 125, 300, "char_developer_01"));
-		this.arrDevelopers.push(new DADeveloper(this.game, 200, 400, "char_developer_01"));
-		this.arrDevelopers.push(new DADeveloper(this.game, 400, 20, "char_developer_01"));
+		//this.arrDevelopers.push(new DADeveloper(this.game, 125, 300, "char_developer_01"));
+		//this.arrDevelopers.push(new DADeveloper(this.game, 200, 400, "char_developer_01"));
+		//this.arrDevelopers.push(new DADeveloper(this.game, 400, 20, "char_developer_01"));
+
+		this.developer = new DADeveloper(this.game, 400, 20, "char_developer_01");
 
 		// Creamos el mobiliario
 		this.arrFurniture.push(new DAFurniture(this.game, 400, 100));
@@ -76,12 +78,13 @@ var DAGame = (function() {
 	*/
 	DAGame.prototype.update = function() {
 
+		this.designer.designer.tint = 0xffffff;
+
 		// Moviendo el diseñador a velocidad 3
 		this.designer.moveDesigner(3);
 
 		// Añadiendo collide entre diseñadores y programadores
-		this.game.physics.arcade.collide(this.arrDevelopers[0].developer, this.designer);
-
+		this.game.physics.arcade.overlap(this.designer.designer, this.developer.developer, this.designer.tryToKill);
 	}
 
 	return DAGame;
