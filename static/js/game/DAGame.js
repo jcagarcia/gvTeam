@@ -15,8 +15,11 @@ var DAGame = (function() {
 	*/
 	DAGame.prototype.init = function() {
 
-		// Setting background color
+		// Poniendo color de fondo
 		this.game.stage.backgroundColor = "#857868";
+
+		// Inicializando los controles de teclado
+		this.cursors = phaserGame.input.keyboard.createCursorKeys();
 	}
 
 	/**
@@ -38,6 +41,10 @@ var DAGame = (function() {
 	* Loop que actualizará el juego
 	*/
 	DAGame.prototype.update = function() {
+
+		// Moviendo el diseñador a velocidad 3
+		this.moveDesigner(3);
+
 	}
 
 	/**
@@ -54,6 +61,34 @@ var DAGame = (function() {
 	    this.designer.endFill();
 
 	    window.graphics = this.designer;
+	}
+
+	/**
+	* Método para mover el diseñador si alguna tecta del teclado está pulsada
+	*/
+	DAGame.prototype.moveDesigner = function(velocidad) {
+
+		// Moviendo hacia la derecha
+		if (this.cursors.right.isDown){
+			this.designer.x += velocidad;
+		}
+
+		// Moviendo hacia la izquierda
+		if (this.cursors.left.isDown){
+			this.designer.x -= velocidad;
+		}
+
+		// Moviendo hacia arriba
+		if (this.cursors.up.isDown){
+			this.designer.y -= velocidad;
+		}
+
+		// Moviendo hacia arriba
+		if (this.cursors.down.isDown){
+			this.designer.y += velocidad;
+		}
+
+    
 	}
 
 	return DAGame;
