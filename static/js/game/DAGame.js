@@ -34,7 +34,7 @@ var DAGame = (function() {
 	DAGame.prototype.preload = function() {
 		
 		// Cargando floor asset
-		this.game.load.image('floor_black', 'static/assets/images/floors/floor_black.jpg');
+		this.game.load.image('floor_wood', 'static/assets/images/floors/floor_wood.jpg');
 		
 		// Cargando character assets
 		this.game.load.spritesheet('char_designer', 'static/assets/images/characters/char_designer.png', 32, 48);
@@ -57,7 +57,7 @@ var DAGame = (function() {
 			floorHeight = 0;
 
 			while(floorHeight < GAME_HEIGHT) {
-				this.game.add.sprite(floorWidth, floorHeight, 'floor_black');
+				this.game.add.sprite(floorWidth, floorHeight, 'floor_wood');
 				floorHeight += 32;
 			}
 			
