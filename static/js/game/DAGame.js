@@ -26,13 +26,31 @@ var DAGame = (function() {
 	* Método para crear el estado in¡cial del juego
 	*/
 	DAGame.prototype.create = function() {
-	}
 
+		// Creando diseñador
+		this.createDesigner();
+	}
 
 	/**
 	* Loop que actualizará el juego
 	*/
 	DAGame.prototype.update = function() {
+	}
+
+	/**
+	* Método que crea un diseñador
+	* TODO: Use asset
+	*/
+	DAGame.prototype.createDesigner = function() {
+		var graphics = this.game.add.graphics(100, 100);
+	    
+	    // dibuja al diseñador
+	    graphics.lineStyle(0);
+	    graphics.beginFill(0xFFFF0B, 0.5);
+	    graphics.drawCircle(0, 0, 50);
+	    graphics.endFill();
+
+	    window.graphics = graphics;
 	}
 
 	return DAGame;
