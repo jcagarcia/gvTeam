@@ -48,7 +48,8 @@ var DAGame = (function() {
 	*/
 	DAGame.prototype.create = function() {
 
-		// TODO: Creamos oficina y mobiliario
+		// Creamos oficina y mobiliario
+		this.game.add.sprite(0, 0, 'floor_01');
 
 		// Creando el diseñador
 		this.designer = new DADesigner(this.game, this.cursors);

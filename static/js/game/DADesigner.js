@@ -24,9 +24,9 @@ var DADesigner = (function() {
 		this.designer.scale.setTo(1.5,1.5);
 
 		// Añadimos animaciones
-		this.designer.animations.add("left", [0,1,2,3], 10, true);
+		this.designer.animations.add("up", [0,1,2,3], 10, true);
 		this.designer.animations.add("right", [4,5,6,7], 10, true);
-		this.designer.animations.add("up", [8,9,10,11], 10, true);
+		this.designer.animations.add("left", [8,9,10,11], 10, true);
 		this.designer.animations.add("down", [12,13,14,15], 10, true);
 
 	}
@@ -36,28 +36,27 @@ var DADesigner = (function() {
 	*/
 	DADesigner.prototype.moveDesigner = function(velocidad) {
 
-		// Moviendo hacia la derecha
-		if (this.cursors.right.isDown){
+		if (this.cursors.right.isDown){ // Moviendo hacia la derecha
 
 			this.designer.x += velocidad;
 			this.designer.animations.play("right");
 
-		}else if (this.cursors.left.isDown){
+		}else if (this.cursors.left.isDown){ // Moviendo hacia la izquierda
 
 			this.designer.x -= velocidad;
 			this.designer.animations.play("left");
 
-		} else if (this.cursors.up.isDown){
+		} else if (this.cursors.up.isDown){ // Moviendo hacia arriba
 
 			this.designer.y -= velocidad;
 			this.designer.animations.play("up");
 
-		} else if (this.cursors.down.isDown){
+		} else if (this.cursors.down.isDown){ // Moviendo hacia abajo
 
 			this.designer.y += velocidad;
 			this.designer.animations.play("down");
 
-		} else {
+		} else { // Si no se mueve, parar la animación
 			this.designer.animations.stop();	
 		}
 	}
