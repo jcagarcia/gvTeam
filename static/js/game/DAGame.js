@@ -68,9 +68,9 @@ var DAGame = (function() {
 		this.designer = new DADesigner(this.game, this.cursors);
 
 		// Creando el programador
-		this.arrDevelopers.push(new DADeveloper(this.game, 125, 300));
-		this.arrDevelopers.push(new DADeveloper(this.game, 200, 400));
-		this.arrDevelopers.push(new DADeveloper(this.game, 400, 20));
+		this.arrDevelopers.push(new DADeveloper(this.game, 125, 300, "char_developer_01"));
+		this.arrDevelopers.push(new DADeveloper(this.game, 200, 400, "char_developer_01"));
+		this.arrDevelopers.push(new DADeveloper(this.game, 400, 20, "char_developer_01"));
 
 		// Creamos el mobiliario
 		this.arrFurniture.push(new DAFurniture(this.game, 400, 100));
