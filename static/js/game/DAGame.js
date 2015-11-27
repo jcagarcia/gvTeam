@@ -5,6 +5,9 @@ var DAGame = (function() {
 
 		// Creando el juego
 		this.game = phaserGame;
+
+		// Creando variable para el diseñador
+		this.designer = undefined;
 	}
 
 	/**
@@ -42,15 +45,15 @@ var DAGame = (function() {
 	* TODO: Use asset
 	*/
 	DAGame.prototype.createDesigner = function() {
-		var graphics = this.game.add.graphics(100, 100);
+		this.designer = this.game.add.graphics(100, 100);
 	    
 	    // dibuja al diseñador
-	    graphics.lineStyle(0);
-	    graphics.beginFill(0xFFFF0B, 0.5);
-	    graphics.drawCircle(0, 0, 50);
-	    graphics.endFill();
+	    this.designer.lineStyle(0);
+	    this.designer.beginFill(0xFFFF0B, 0.5);
+	    this.designer.drawCircle(0, 0, 50);
+	    this.designer.endFill();
 
-	    window.graphics = graphics;
+	    window.graphics = this.designer;
 	}
 
 	return DAGame;
