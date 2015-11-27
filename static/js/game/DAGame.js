@@ -10,7 +10,7 @@ var DAGame = (function() {
 		this.designer = undefined;
 
 		// Creando array de programadores
-		this.arrProgramadores = [];
+		this.arrDevelopers = [];
 	}
 
 	/**
@@ -36,8 +36,13 @@ var DAGame = (function() {
 	*/
 	DAGame.prototype.create = function() {
 
-		// Creando del iseñador
+		// Creando el diseñador
 		this.designer = new DADesigner(this.game, this.cursors);
+
+		// Creando el programador
+		this.arrDevelopers.push(new DADeveloper(this.game, this.cursors, 125, 300));
+		this.arrDevelopers.push(new DADeveloper(this.game, this.cursors, 200, 400));
+		this.arrDevelopers.push(new DADeveloper(this.game, this.cursors, 400, 20));
 	}
 
 	/**
