@@ -75,8 +75,14 @@ var DADesigner = (function() {
 
 		// En primer lugar marcamos como golpeado al diseñador
 		designer.tint = 0xE41937;
-		
 
+	}
+
+	/**
+	* Método que devuelve el designer
+	*/
+	DADesigner.prototype.getDesigner = function() {
+		return this.designer;
 	}
 
 

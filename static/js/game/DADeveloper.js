@@ -48,6 +48,13 @@ var DADeveloper = (function() {
 
 	}
 
+	/**
+	* Método que devuelve el developer
+	*/
+	DADeveloper.prototype.getDeveloper = function() {
+		return this.developer;
+	}
+
 	return DADeveloper;
 
 })();

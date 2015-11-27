@@ -2,7 +2,7 @@
 
 // Variables globales de tamaño del juego
 var GAME_WIDTH = 800;
-var GAME_HEIGHT = 600;
+var GAME_HEIGHT = 400;
 
 // Generando objeto state que contiene todas las funciones
 var state = {
