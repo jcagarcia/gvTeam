@@ -11,7 +11,7 @@ var DAGame = (function() {
 
 		// Creando array de programadores
 		this.arrDevelopers = [];
-
+		
 		// Creamos array de mobiliario
 		this.arrFurniture = [];
 	}
@@ -32,6 +32,15 @@ var DAGame = (function() {
 	* Método que carga los assets y recursos necesarios
 	*/
 	DAGame.prototype.preload = function() {
+		
+		// Cargando floor asset
+		this.game.load.spritesheet('floor_01', 'static/assets/images/floors/floor_01.png', 32, 32);
+		
+		// Cargando character assets
+		this.game.load.spritesheet('char_designer', 'static/assets/images/characters/char_designer.png', 32, 48);
+		this.game.load.spritesheet('char_developer_01', 'static/assets/images/characters/char_developer_01.png', 32, 48);
+		this.game.load.spritesheet('char_developer_02', 'static/assets/images/characters/char_developer_02.png', 32, 48);
+		this.game.load.spritesheet('char_developer_03', 'static/assets/images/characters/char_developer_03.png', 32, 48);
 	}
 
 	/**
