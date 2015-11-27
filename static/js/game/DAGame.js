@@ -34,7 +34,7 @@ var DAGame = (function() {
 	DAGame.prototype.preload = function() {
 		
 		// Cargando floor asset
-		this.game.load.image('floor_black', 'static/assets/images/floors/floor_black.jpg');
+		this.game.load.image('floor_wood', 'static/assets/images/floors/floor_wood.jpg');
 		
 		// Cargando character assets
 		this.game.load.spritesheet('char_designer', 'static/assets/images/characters/char_designer.png', 32, 48);
@@ -57,7 +57,7 @@ var DAGame = (function() {
 			floorHeight = 0;
 
 			while(floorHeight < GAME_HEIGHT) {
-				this.game.add.sprite(floorWidth, floorHeight, 'floor_black');
+				this.game.add.sprite(floorWidth, floorHeight, 'floor_wood');
 				floorHeight += 32;
 			}
 			
@@ -68,9 +68,9 @@ var DAGame = (function() {
 		this.designer = new DADesigner(this.game, this.cursors);
 
 		// Creando el programador
-		this.arrDevelopers.push(new DADeveloper(this.game, 125, 300));
-		this.arrDevelopers.push(new DADeveloper(this.game, 200, 400));
-		this.arrDevelopers.push(new DADeveloper(this.game, 400, 20));
+		this.arrDevelopers.push(new DADeveloper(this.game, 125, 300, "char_developer_01"));
+		this.arrDevelopers.push(new DADeveloper(this.game, 200, 400, "char_developer_01"));
+		this.arrDevelopers.push(new DADeveloper(this.game, 400, 20, "char_developer_01"));
 
 		// Creamos el mobiliario
 		this.arrFurniture.push(new DAFurniture(this.game, 400, 100));

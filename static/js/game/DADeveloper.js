@@ -1,7 +1,7 @@
 var DADeveloper = (function() {
 
 	// Constructor de la clase developer
-	function DADeveloper(phaserGame, posX, posY) {
+	function DADeveloper(phaserGame, posX, posY, spritSheetLabel) {
 
 		// Guardando game
 		this.game = phaserGame;
@@ -10,15 +10,27 @@ var DADeveloper = (function() {
 		this.posX = posX;
 		this.posY = posY;
 
-		this.developer = phaserGame.add.graphics(100, 100);
-	    
-	    // dibuja al developer
-	    this.developer.lineStyle(0);
-	    this.developer.beginFill(0xDD0029, 0.8);
-	    this.developer.drawCircle(posX, posY, 50);
-	    this.developer.endFill();
+		// Guardamos el spritSheet
+		this.spritSheetLabel = spritSheetLabel;
 
-	    window.graphics = this.developer;
+		// Generando programador
+		this.createDeveloper();
+
+	}
+
+	/**
+	* Método para crear el developer utilizando un sprite
+	*/
+	DADeveloper.prototype.createDeveloper = function(){
+		this.developer = this.game.add.sprite(this.posX, this.posY, this.spritSheetLabel);
+		this.developer.scale.setTo(2,2);
+
+		// Añadimos animaciones
+		this.developer.animations.add("up", [0,1,2,3], 10, true);
+		this.developer.animations.add("right", [4,5,6,7], 10, true);
+		this.developer.animations.add("left", [8,9,10,11], 10, true);
+		this.developer.animations.add("down", [12,13,14,15], 10, true);
+
 	}
 
 
