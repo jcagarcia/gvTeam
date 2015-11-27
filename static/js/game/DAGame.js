@@ -29,6 +29,9 @@ var DAGame = (function() {
 
 		// Inicializando los controles de teclado
 		this.cursors = phaserGame.input.keyboard.createCursorKeys();
+
+		// Inicializando physics
+		this.game.physics.startSystem(Phaser.Physics.ARCADE);
 	}
 
 	/**
@@ -50,6 +53,9 @@ var DAGame = (function() {
 	* Método para crear el estado in¡cial del juego
 	*/
 	DAGame.prototype.create = function() {
+
+		// Cremos grupo de developers
+		this.grpDevelopers = this.game.add.group();
 
 		// Creamos oficina
 		this.office = new DAOffice(this.game);

@@ -11,8 +11,6 @@ var DADesigner = (function() {
 
 		// Generando diseñador
 		this.createDesigner();
-
-	    window.graphics = this.designer;
 	}
 
 
@@ -28,6 +26,10 @@ var DADesigner = (function() {
 		this.designer.animations.add("right", [4,5,6,7], 10, true);
 		this.designer.animations.add("left", [8,9,10,11], 10, true);
 		this.designer.animations.add("down", [12,13,14,15], 10, true);
+
+		this.game.physics.arcade.enable(this.designer);
+		this.designer.enableBody = true;
+		this.designer.body.collideWorldBounds = true;
 
 	}
 
