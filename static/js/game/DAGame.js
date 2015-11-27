@@ -11,6 +11,9 @@ var DAGame = (function() {
 
 		// Creando array de programadores
 		this.arrDevelopers = [];
+
+		// Creamos array de mobiliario
+		this.arrFurniture = [];
 	}
 
 	/**
@@ -42,9 +45,12 @@ var DAGame = (function() {
 		this.designer = new DADesigner(this.game, this.cursors);
 
 		// Creando el programador
-		this.arrDevelopers.push(new DADeveloper(this.game, this.cursors, 125, 300));
-		this.arrDevelopers.push(new DADeveloper(this.game, this.cursors, 200, 400));
-		this.arrDevelopers.push(new DADeveloper(this.game, this.cursors, 400, 20));
+		this.arrDevelopers.push(new DADeveloper(this.game, 125, 300));
+		this.arrDevelopers.push(new DADeveloper(this.game, 200, 400));
+		this.arrDevelopers.push(new DADeveloper(this.game, 400, 20));
+
+		// Creamos el mobiliario
+		this.arrFurniture.push(new DAFurniture(this.game, 400, 100));
 	}
 
 	/**

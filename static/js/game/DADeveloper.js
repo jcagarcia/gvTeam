@@ -1,13 +1,10 @@
 var DADeveloper = (function() {
 
 	// Constructor de la clase developer
-	function DADeveloper(phaserGame, cursors, posX, posY) {
+	function DADeveloper(phaserGame, posX, posY) {
 
 		// Guardando game
 		this.game = phaserGame;
-
-		// Guardando cursores
-		this.cursors = cursors;
 
 		// Guardamos la posicion original
 		this.posX = posX;
