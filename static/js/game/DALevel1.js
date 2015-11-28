@@ -112,6 +112,10 @@ var DALevel1 = (function() {
 	*/
 	DALevel1.prototype.update = function() {
 
+		if (this.designer == undefined) {
+			this.create();
+		}
+
 		this.designer.getSprite().tint = 0xffffff;
 
 		// Moviendo el diseñador a velocidad 150
@@ -191,7 +195,7 @@ var DALevel1 = (function() {
 	}
 
 	DALevel1.prototype.gameOver = function() {
-		console.log("GAME OVER!");
+		GAME_LEVEL = 2;
 	}
 
 	return DALevel1;

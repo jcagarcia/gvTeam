@@ -23,7 +23,7 @@ var phaserGame = new Phaser.Game(
 	state
 );
 
-var dAGame = new DAGame(phaserGame, 0);
+var dAGame = new DAGame(phaserGame);
 
 function init() {
 	dAGame.init();

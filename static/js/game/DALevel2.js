@@ -92,7 +92,7 @@ var DALevel2 = (function() {
 		// Creamos el suelo de la oficina
 		this.office.createFloor("floor_wood");
 		this.arrBackgrounds = this.office.createBackground("background_1");
-		this.door = this.office.createExitDoor(GAME_WIDTH - 250, 20);
+		this.door = this.office.createExitDoor(50, 20);
 
 		// Creando el diseñador
 		this.designer = new DADesigner(this.game, this.cursors, GAME_WIDTH - 250, GAME_HEIGHT - 48, "up");
@@ -218,12 +218,12 @@ var DALevel2 = (function() {
 		
 		// Para finalizar el nivel necesitamos que el diseñador haya cogido el cactus
 		if(designer.hasCactus) {
-			console.log("LEVEL FINISHED");
+			GAME_LEVEL = 3;
 		}
 	}
 
 	DALevel2.prototype.gameOver = function() {
-		console.log("GAME OVER!");
+		GAME_LEVEL = 2;
 	}
 
 	return DALevel2;
