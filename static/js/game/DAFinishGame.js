@@ -39,7 +39,6 @@ var DAFinishGame = (function() {
 		this.office.createFloor("floor_wood");
 
 		this.img = this.game.add.sprite(GAME_WIDTH / 2 - 225, 100, "win");
-		this.img.scale.setTo(0.8,0.8);
 	}
 
 	/**
