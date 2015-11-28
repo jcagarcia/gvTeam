@@ -26,6 +26,9 @@ var DAGame = (function() {
 		
 		// Creamos array de mobiliario
 		this.arrFurniture = [];
+
+		// Variable para almacenar el tiempo entre vidas
+		this.timeBetweenKills = 0;
 	}
 
 	/**
@@ -116,8 +119,8 @@ var DAGame = (function() {
 
 		this.designer.getSprite().tint = 0xffffff;
 
-		// Moviendo el diseñador a velocidad 3
-		this.designer.moveDesigner(250);
+		// Moviendo el diseñador a velocidad 150
+		this.designer.moveDesigner(150);
 
 		for(i in this.arrDevelopers){
 			var developer = this.arrDevelopers[i];
@@ -149,6 +152,7 @@ var DAGame = (function() {
 	}
 
 	DAGame.prototype.updateHearths = function () {
+
 		var hearths = this.designer.getSprite().hearths;
 
 		if(hearths == 2) {
@@ -158,6 +162,13 @@ var DAGame = (function() {
 		}else if (hearths == 0){
 			this.hearth3.kill();
 			this.gameOver();
+		}
+
+		this.timeBetweenKills++;
+
+		if(this.timeBetweenKills >= 200){
+			this.timeBetweenKills = 0;
+			this.designer.getSprite().lastCollisionWith = undefined;
 		}
 	}
 
