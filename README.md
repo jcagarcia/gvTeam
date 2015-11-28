@@ -1,6 +1,6 @@
 # Developers Attack!
 
-![Developers Attack](static/assets/images/backgrounds/logo.pn)
+![Developers Attack](static/assets/images/backgrounds/logo.png)
 
 This game was created during the [#geekHackathon](http://hackathon.geekshubsacademy.com/#/) organized by [GeeksHubsAcademy](http://geekshubsacademy.com/), [Iukanet](https://www.iukanet.com/) and [DevScola](http://www.devscola.org/).
 
