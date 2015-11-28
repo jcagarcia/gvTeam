@@ -15,6 +15,9 @@ var DAGame = (function() {
 		// Creando variable para la puerta de salida
 		this.door = undefined;
 
+		// Creando variable para el cactus
+		this.cactus = undefined;
+
 		// Creando variable para el fondo
 		this.arrBackgrounds = undefined;
 
@@ -54,6 +57,7 @@ var DAGame = (function() {
 		// Cargando objetos
 		this.game.load.image('door_1', 'static/assets/images/objects/door_1.jpg', 8, 34);
 		this.game.load.image('hearth_1', 'static/assets/images/objects/hearth_1.png', 32, 32);
+		this.game.load.image('cactus_1', 'static/assets/images/objects/cactus_1.png', 32, 32);
 
 		// Cargando mobiliario
 		this.game.load.image('table', 'static/assets/images/furniture/table.png', 55, 41);
@@ -97,6 +101,9 @@ var DAGame = (function() {
 
 		// Creamos el mobiliario
 		this.arrFurniture.push(new DAFurniture(this.game, 400, 100, "table"));
+
+		// Creando el cactus
+		this.cactus = new DACactus(this.game, 400, 100, "cactus_1");
 
 		// Subimos arriba del todo el panel de estado
 		this.game.world.bringToTop(this.pnlStatus);
