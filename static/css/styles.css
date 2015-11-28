@@ -1,0 +1,19 @@
+#oficina {
+	position: fixed;
+	top: 30%;
+	left: 28%;
+}
+#logo{
+    background-image: url(img/logo.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+	display: block; 
+	text-align: center;
+	height: 200px;
+}
+
+body {
+    background-image: url(img/office.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
