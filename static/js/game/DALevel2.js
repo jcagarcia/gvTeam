@@ -174,7 +174,7 @@ var DALevel2 = (function() {
 		}
 		
 		// Añadiendo collide entre el developer y el background
-		for(j in this.arrBackgrounds) {
+		for(i in this.arrBackgrounds) {
 			var background = this.arrBackgrounds[i];
 			for(j in this.arrDevelopers){
 				var developer = this.arrDevelopers[j];
