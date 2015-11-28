@@ -38,7 +38,7 @@ var DAInitial = (function() {
 
 		var style = { font: "18px Arial", fill: "#ff0044", align: "center" };
 
-    	text = this.game.add.text(GAME_WIDTH / 2, 250, "Press enter key to continue", style);
+    	text = this.game.add.text(GAME_WIDTH / 2, 250, "Click to continue", style);
     	text.anchor.set(0.5);
 	}
 
@@ -51,22 +51,6 @@ var DAInitial = (function() {
 			GAME_LEVEL++;
 		}
 		
-	}
-
-
-	/**
-	* Método para finalizar el nivel
-	*/
-	DAInitial.prototype.finishLevel = function(designer, door) {
-		
-		// Para finalizar el nivel necesitamos que el diseñador haya cogido el cactus
-		if(designer.hasCactus) {
-			GAME_LEVEL++;
-		}
-	}
-
-	DAInitial.prototype.gameOver = function() {
-		GAME_LEVEL = 2;
 	}
 
 	return DAInitial;

@@ -195,7 +195,7 @@ var DALevel1 = (function() {
 	}
 
 	DALevel1.prototype.gameOver = function() {
-		GAME_LEVEL = 2;
+		GAME_LEVEL = 3;
 	}
 
 	return DALevel1;

@@ -218,12 +218,12 @@ var DALevel2 = (function() {
 		
 		// Para finalizar el nivel necesitamos que el diseñador haya cogido el cactus
 		if(designer.hasCactus) {
-			GAME_LEVEL = 3;
+			GAME_LEVEL = 4;
 		}
 	}
 
 	DALevel2.prototype.gameOver = function() {
-		GAME_LEVEL = 2;
+		GAME_LEVEL = 3;
 	}
 
 	return DALevel2;
