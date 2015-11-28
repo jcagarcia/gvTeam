@@ -1,7 +1,7 @@
 var DADeveloper = (function() {
 
 	// Constructor de la clase developer
-	function DADeveloper(phaserGame, posX, posY, velocity, spritSheetLabel) {
+	function DADeveloper(phaserGame, posX, posY, velocity, spritSheetLabel, startPosition) {
 
 		// Guardando game
 		this.game = phaserGame;
@@ -15,6 +15,9 @@ var DADeveloper = (function() {
 
 		// Guardamos el spritSheet
 		this.spritSheetLabel = spritSheetLabel;
+
+		// Guardamos la posicion inicial
+		this.startPosition = startPosition;
 
 		// Generando programador
 		this.createDeveloper();
@@ -63,18 +66,22 @@ var DADeveloper = (function() {
 
 			if(this.posX > fPosX){
 				this.developer.body.velocity.x = -this.developerVelocity;
+				this.developer.animations.play(this.startPosition);
 			}
 			
 			if(this.posX < fPosX){
 				this.developer.body.velocity.x = +this.developerVelocity;
+				this.developer.animations.play(this.startPosition);
 			}
 
 			if(this.posY > fPosY){
 				this.developer.body.velocity.y = -this.developerVelocity;
+				this.developer.animations.play(this.startPosition);
 			}
 
 			if(this.posX < fPosY){
 				this.developer.body.velocity.y = +this.developerVelocity;
+				this.developer.animations.play(this.startPosition);
 			}
 		}
 	}

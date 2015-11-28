@@ -43,13 +43,16 @@ var DAOffice = (function() {
 		
 		this.game.physics.arcade.enable(this.background);
 		this.background.enableBody = true;
+		this.background.body.collideWorldBounds = true;
 		this.background.body.immovable = true;
+
 
 		this.background2 = this.game.add.sprite(this.background.width - 40, 0, spriteLabel);
 		this.background2.scale.setTo(2,2);
 		
 		this.game.physics.arcade.enable(this.background2);
 		this.background2.enableBody = true;
+		this.background2.body.collideWorldBounds = true;
 		this.background2.body.immovable = true;
 
 		// Guardando todos los backgrounds

@@ -98,10 +98,12 @@ var DALevel2 = (function() {
 		this.designer = new DADesigner(this.game, this.cursors, GAME_WIDTH - 250, GAME_HEIGHT - 48, "up");
 		
 		// Creando el programador
-		this.arrDevelopers.push(new DADeveloper(this.game, 125, 200, 60, "char_developer_01"));
-		this.arrDevelopers.push(new DADeveloper(this.game, 600, 90, 60, "char_developer_01"));
-		this.arrDevelopers.push(new DADeveloper(this.game, 300, 20, 60, "char_developer_01"));
-1
+		this.arrDevelopers.push(new DADeveloper(this.game, 125, 200, 60, "char_developer_01", "up"));
+		this.arrDevelopers.push(new DADeveloper(this.game, 600, 90, 60, "char_developer_01", "right"));
+		this.arrDevelopers.push(new DADeveloper(this.game, 400, 120, 60, "char_developer_01", "up"));
+		this.arrDevelopers.push(new DADeveloper(this.game, 600, 90, 60, "char_developer_01", "left"));
+		this.arrDevelopers.push(new DADeveloper(this.game, 300, 120, 60, "char_developer_01", "left"));
+
 		// Creamos el mobiliario
 		this.arrFurniture.push(new DAFurniture(this.game, 400, 100, "table"));
 
@@ -153,7 +155,7 @@ var DALevel2 = (function() {
 			this.game.physics.arcade.collide(this.designer.getSprite(), background);
 		}
 		
-		// Añadiendo collide entre el diseñador y el background
+		// Añadiendo collide entre el developer y el background
 		for(j in this.arrBackgrounds) {
 			var background = this.arrBackgrounds[i];
 			for(j in this.arrDevelopers){
