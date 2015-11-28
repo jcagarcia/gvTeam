@@ -12,6 +12,9 @@ var DAGame = (function() {
 		// Creando variable para la oficina
 		this.office = undefined;
 
+		// Creando variable para la puerta de salida
+		this.door = undefined;
+
 		// Creando array de programadores
 		this.arrDevelopers = [];
 		
@@ -47,6 +50,9 @@ var DAGame = (function() {
 		this.game.load.spritesheet('char_developer_01', 'static/assets/images/characters/char_developer_01.png', 32, 48);
 		this.game.load.spritesheet('char_developer_02', 'static/assets/images/characters/char_developer_02.png', 32, 48);
 		this.game.load.spritesheet('char_developer_03', 'static/assets/images/characters/char_developer_03.png', 32, 48);
+
+		// Cargando objetos
+		this.game.load.spritesheet('door_1', 'static/assets/images/objects/door_1.jpg', 8, 34);
 	}
 
 	/**
@@ -58,6 +64,7 @@ var DAGame = (function() {
 		this.office = new DAOffice(this.game);
 		// Creamos el suelo de la oficina
 		this.office.createFloor();
+		this.door = this.office.createExitDoor(GAME_WIDTH - 10, GAME_HEIGHT - 150);
 
 		// Creando el diseñador
 		this.designer = new DADesigner(this.game, this.cursors);
@@ -86,10 +93,20 @@ var DAGame = (function() {
 
 			developer.getSprite().animations.play("up");
 
-			// Añadiendo collide entre diseñadores y programadores
+			// Añadiendo overlap entre diseñadores y programadores
 			this.game.physics.arcade.overlap(this.designer.getSprite(), developer.getSprite(), this.designer.tryToKill);
 		}	
+
+		// Añadiendo overlap entre el diseñador y la puerta de salida
+		this.game.physics.arcade.overlap(this.designer.getSprite(), this.door, this.finishLevel);
 		
+	}
+
+	/**
+	* Método para finalizar el nivel
+	*/
+	DAGame.prototype.finishLevel = function(designer, door) {
+		console.log("Nivel finalizado!");
 	}
 
 	return DAGame;

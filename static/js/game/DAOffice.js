@@ -6,9 +6,10 @@ var DAOffice = (function() {
 		// Guardando game
 		this.game = phaserGame;
 
+		// Variable para guardar la puerta
+		this.door = undefined;
+
 	}
-
-
 	/**
 	* Método para crear suelo
 	*/
@@ -26,6 +27,21 @@ var DAOffice = (function() {
 			
 			floorWidth += 32;
 		}
+	}
+
+	/**
+	* Método para crear la puerta de salida
+	*/
+	DAOffice.prototype.createExitDoor = function(posX, posY) {
+
+		this.door = this.game.add.sprite(posX, posY, 'door_1');
+		this.door.scale.setTo(3,3);
+
+		this.door.enableBody = true;
+		this.game.physics.arcade.enable(this.door);
+
+	    return this.door;
+		
 	}
 
 	return DAOffice;
