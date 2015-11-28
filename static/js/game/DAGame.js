@@ -53,7 +53,7 @@ var DAGame = (function() {
 
 		// Cargando objetos
 		this.game.load.image('door_1', 'static/assets/images/objects/door_1.jpg', 8, 34);
-		this.game.load.image('heart_1', 'static/assets/images/objects/heart_1.png', 32, 32);
+		this.game.load.image('hearth_1', 'static/assets/images/objects/hearth_1.png', 32, 32);
 
 		// Cargando mobiliario
 		this.game.load.image('table', 'static/assets/images/furniture/table.png', 55, 41);
@@ -72,12 +72,12 @@ var DAGame = (function() {
 
 		// Creando grupo para panel superior
 		this.pnlStatus = this.game.add.group();
-		this.heart1 = this.game.add.sprite(GAME_WIDTH - 150, 10, "heart_1");
-		this.heart2 = this.game.add.sprite(GAME_WIDTH - 100, 10, "heart_1");
-		this.heart3 = this.game.add.sprite(GAME_WIDTH - 50, 10, "heart_1");
-		this.pnlStatus.add(this.heart1);
-		this.pnlStatus.add(this.heart2);
-		this.pnlStatus.add(this.heart3);
+		this.hearth1 = this.game.add.sprite(GAME_WIDTH - 150, 10, "hearth_1");
+		this.hearth2 = this.game.add.sprite(GAME_WIDTH - 100, 10, "hearth_1");
+		this.hearth3 = this.game.add.sprite(GAME_WIDTH - 50, 10, "hearth_1");
+		this.pnlStatus.add(this.hearth1);
+		this.pnlStatus.add(this.hearth2);
+		this.pnlStatus.add(this.hearth3);
 		
 
 		// Creamos oficina
@@ -137,19 +137,19 @@ var DAGame = (function() {
 		}
 
 		// Actualizando panel de vidas
-		this.updateHearts();
+		this.updateHearths();
 		
 	}
 
-	DAGame.prototype.updateHearts = function () {
-		var hearts = this.designer.getSprite().hearts;
+	DAGame.prototype.updateHearths = function () {
+		var hearths = this.designer.getSprite().hearths;
 
-		if(hearts == 2) {
-			this.heart1.kill();
-		}else if(hearts == 1) {
-			this.heart2.kill();
-		}else if (hearts == 0){
-			this.heart3.kill();
+		if(hearths == 2) {
+			this.hearth1.kill();
+		}else if(hearths == 1) {
+			this.hearth2.kill();
+		}else if (hearths == 0){
+			this.hearth3.kill();
 			this.gameOver();
 		}
 	}

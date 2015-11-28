@@ -38,7 +38,7 @@ var DADesigner = (function() {
 
 		this.designer.animations.play("right");
 
-		this.designer.hearts = 3;
+		this.designer.hearths = 3;
 	}
 
 	/**
@@ -81,7 +81,7 @@ var DADesigner = (function() {
 
 		// Comprobamos que no haya sido golpeado ya por este developer
 		if(designer.lastCollisionWith != developer){
-			designer.hearts--;
+			designer.hearths--;
 		}
 
 		// Guardamos al developer contra el que hemos colisionado
