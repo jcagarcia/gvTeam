@@ -15,6 +15,9 @@ var DAGame = (function() {
 		// Creando variable para la puerta de salida
 		this.door = undefined;
 
+		// Creando variable para el fondo
+		this.arrBackgrounds = undefined;
+
 		// Creando array de programadores
 		this.arrDevelopers = [];
 		
@@ -32,9 +35,6 @@ var DAGame = (function() {
 
 		// Inicializando los controles de teclado
 		this.cursors = phaserGame.input.keyboard.createCursorKeys();
-
-		// Inicializando physics
-		this.game.physics.startSystem(Phaser.Physics.ARCADE);
 	}
 
 	/**
@@ -66,20 +66,23 @@ var DAGame = (function() {
 	*/
 	DAGame.prototype.create = function() {
 
+		// Inicializando physics
+		this.game.physics.startSystem(Phaser.Physics.ARCADE);
+
 		// Creamos oficina
 		this.office = new DAOffice(this.game);
 		// Creamos el suelo de la oficina
 		this.office.createFloor("floor_wood");
 		this.door = this.office.createExitDoor(GAME_WIDTH - 10, GAME_HEIGHT - 150);
-		this.office.createBackground("background_1");
+		this.arrBackgrounds = this.office.createBackground("background_1");
 
 		// Creando el diseñador
 		this.designer = new DADesigner(this.game, this.cursors);
 		
 		// Creando el programador
-		this.arrDevelopers.push(new DADeveloper(this.game, 125, 200, "char_developer_01"));
-		this.arrDevelopers.push(new DADeveloper(this.game, 600, 90, "char_developer_01"));
-		this.arrDevelopers.push(new DADeveloper(this.game, 300, 20, "char_developer_01"));
+		//this.arrDevelopers.push(new DADeveloper(this.game, 125, 200, "char_developer_01"));
+		//this.arrDevelopers.push(new DADeveloper(this.game, 600, 90, "char_developer_01"));
+		//this.arrDevelopers.push(new DADeveloper(this.game, 300, 20, "char_developer_01"));
 
 		// Creamos el mobiliario
 		this.arrFurniture.push(new DAFurniture(this.game, 400, 100, "table"));
@@ -106,6 +109,18 @@ var DAGame = (function() {
 
 		// Añadiendo overlap entre el diseñador y la puerta de salida
 		this.game.physics.arcade.overlap(this.designer.getSprite(), this.door, this.finishLevel);
+
+		// Añadiendo collide entre el diseñador y el background
+		for(i in this.arrBackgrounds) {
+			var background = this.arrBackgrounds[i];
+			this.game.physics.arcade.collide(this.designer.getSprite(), this.arrBackgrounds[0]);
+		}
+
+		// Añadiendo collide entre el diseñador y el mobiliario
+		for(i in this.arrFurniture) {
+			var furniture = this.arrFurniture[i];
+			this.game.physics.arcade.overlap(this.designer.getSprite(), furniture.getSprite(), this.designer.stop);
+		}
 		
 	}
 
