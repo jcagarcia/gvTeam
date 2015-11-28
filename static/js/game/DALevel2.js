@@ -98,10 +98,10 @@ var DALevel2 = (function() {
 		this.designer = new DADesigner(this.game, this.cursors, GAME_WIDTH - 250, GAME_HEIGHT - 48, "up");
 		
 		// Creando el programador
-		this.arrDevelopers.push(new DADeveloper(this.game, 125, 200, "char_developer_01"));
-		this.arrDevelopers.push(new DADeveloper(this.game, 600, 90, "char_developer_01"));
-		this.arrDevelopers.push(new DADeveloper(this.game, 300, 20, "char_developer_01"));
-
+		this.arrDevelopers.push(new DADeveloper(this.game, 125, 200, 60, "char_developer_01"));
+		this.arrDevelopers.push(new DADeveloper(this.game, 600, 90, 60, "char_developer_01"));
+		this.arrDevelopers.push(new DADeveloper(this.game, 300, 20, 60, "char_developer_01"));
+1
 		// Creamos el mobiliario
 		this.arrFurniture.push(new DAFurniture(this.game, 400, 100, "table"));
 
@@ -133,7 +133,9 @@ var DALevel2 = (function() {
 			var developer = this.arrDevelopers[i];
 
 			// Moviendo los desarroladores aleatoriamente
-			developer.moveDeveloperToXY(800, 500, null);
+			var randomX = Math.floor(Math.random() * 200);
+			var randomY = Math.floor(Math.random() * 200);	
+			developer.moveDeveloperToXY(randomX, randomY);
 
 			// Añadiendo overlap entre diseñadores y programadores
 			this.game.physics.arcade.overlap(this.designer.getSprite(), developer.getSprite(), this.designer.tryToKill);
