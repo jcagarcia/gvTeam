@@ -37,6 +37,7 @@ var DADeveloper = (function() {
 		this.developer.enableBody = true;
 		this.game.physics.arcade.enable(this.developer);
 		this.developer.body.collideWorldBounds = true;
+		this.developer.body.immovable = true;
 	}
 	
 	// Generando ruta 1 programador 
