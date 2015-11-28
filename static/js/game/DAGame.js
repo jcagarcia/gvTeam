@@ -127,7 +127,8 @@ var DAGame = (function() {
 		for(i in this.arrDevelopers){
 			var developer = this.arrDevelopers[i];
 
-			developer.getSprite().animations.play("up");
+			// Moviendo los desarroladores aleatoriamente
+			developer.moveDeveloperToXY(800, 500, null);
 
 			// Añadiendo overlap entre diseñadores y programadores
 			this.game.physics.arcade.overlap(this.designer.getSprite(), developer.getSprite(), this.designer.tryToKill);
@@ -141,11 +142,29 @@ var DAGame = (function() {
 			var background = this.arrBackgrounds[i];
 			this.game.physics.arcade.collide(this.designer.getSprite(), background);
 		}
+		
+		// Añadiendo collide entre el diseñador y el background
+		for(j in this.arrBackgrounds) {
+			var background = this.arrBackgrounds[i];
+			for(j in this.arrDevelopers){
+				var developer = this.arrDevelopers[j];
+				this.game.physics.arcade.collide(developer.getSprite(), background);
+			}
+		}
 
 		// Añadiendo collide entre el diseñador y el mobiliario
 		for(i in this.arrFurniture) {
 			var furniture = this.arrFurniture[i];
 			this.game.physics.arcade.collide(this.designer.getSprite(), furniture.getSprite());
+		}
+		
+		// Añadiendo collide entre los desarrolladores y el mobiliario
+		for(i in this.arrFurniture) {
+			var furniture = this.arrFurniture[i];
+			for(j in this.arrDevelopers){
+				var developer = this.arrDevelopers[j];
+				this.game.physics.arcade.collide(developer.getSprite(), furniture.getSprite());
+			}
 		}
 
 		// Actualizando panel de vidas
