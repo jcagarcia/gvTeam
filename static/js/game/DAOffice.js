@@ -65,8 +65,7 @@ var DAOffice = (function() {
 	DAOffice.prototype.createExitDoor = function(posX, posY) {
 
 		this.door = this.game.add.sprite(posX, posY, 'door_1');
-		this.door.scale.setTo(3,3);
-		this.door.tint = 0xE41937;
+		this.door.scale.setTo(1.7,1.7);
 
 		this.door.enableBody = true;
 		this.game.physics.arcade.enable(this.door);

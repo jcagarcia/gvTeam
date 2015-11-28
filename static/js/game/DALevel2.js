@@ -1,7 +1,7 @@
-var DALevel1 = (function() {
+var DALevel2 = (function() {
 
 	// Constructor de la clase DAGame
-	function DALevel1 (phaserGame) {
+	function DALevel2 (phaserGame) {
 
 		// Creando el juego
 		this.game = phaserGame;
@@ -34,7 +34,7 @@ var DALevel1 = (function() {
 	/**
 	* Método que inicializa el escenario básico del juego
 	*/
-	DALevel1.prototype.init = function() {
+	DALevel2.prototype.init = function() {
 
 		// Poniendo color de fondo
 		this.game.stage.backgroundColor = "#857868";
@@ -46,13 +46,16 @@ var DALevel1 = (function() {
 	/**
 	* Método que carga los assets y recursos necesarios
 	*/
-	DALevel1.prototype.preload = function() {
+	DALevel2.prototype.preload = function() {
 		
 		// Cargando floor asset
 		this.game.load.image('floor_wood', 'static/assets/images/floors/floor_wood.jpg');
 		
 		// Cargando character assets
 		this.game.load.spritesheet('char_designer', 'static/assets/images/characters/char_designer.png', 32, 48);
+		this.game.load.spritesheet('char_developer_01', 'static/assets/images/characters/char_developer_01.png', 32, 48);
+		this.game.load.spritesheet('char_developer_02', 'static/assets/images/characters/char_developer_02.png', 32, 48);
+		this.game.load.spritesheet('char_developer_03', 'static/assets/images/characters/char_developer_03.png', 32, 48);
 
 		// Cargando objetos
 		this.game.load.image('hearth_1', 'static/assets/images/objects/hearth_1.png', 32, 32);
@@ -69,7 +72,7 @@ var DALevel1 = (function() {
 	/**
 	* Método para crear el estado in¡cial del juego
 	*/
-	DALevel1.prototype.create = function() {
+	DALevel2.prototype.create = function() {
 
 		// Inicializando physics
 		this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -94,6 +97,10 @@ var DALevel1 = (function() {
 		// Creando el diseñador
 		this.designer = new DADesigner(this.game, this.cursors);
 		
+		// Creando el programador
+		//this.arrDevelopers.push(new DADeveloper(this.game, 125, 200, "char_developer_01"));
+		//this.arrDevelopers.push(new DADeveloper(this.game, 600, 90, "char_developer_01"));
+		//this.arrDevelopers.push(new DADeveloper(this.game, 300, 20, "char_developer_01"));
 
 		// Creamos el mobiliario
 		this.arrFurniture.push(new DAFurniture(this.game, 400, 100, "table"));
@@ -110,12 +117,22 @@ var DALevel1 = (function() {
 	/**
 	* Loop que actualizará el juego
 	*/
-	DALevel1.prototype.update = function() {
+	DALevel2.prototype.update = function() {
 
 		this.designer.getSprite().tint = 0xffffff;
 
 		// Moviendo el diseñador a velocidad 150
 		this.designer.moveDesigner(150);
+
+		for(i in this.arrDevelopers){
+			var developer = this.arrDevelopers[i];
+
+			// Moviendo los desarroladores aleatoriamente
+			developer.moveDeveloperToXY(800, 500, null);
+
+			// Añadiendo overlap entre diseñadores y programadores
+			this.game.physics.arcade.overlap(this.designer.getSprite(), developer.getSprite(), this.designer.tryToKill);
+		}	
 
 		// Añadiendo overlap entre el diseñador y la puerta de salida
 		this.game.physics.arcade.overlap(this.designer.getSprite(), this.door, this.finishLevel);
@@ -144,13 +161,23 @@ var DALevel1 = (function() {
 			this.game.physics.arcade.collide(this.designer.getSprite(), furniture.getSprite());
 		}
 		
+		// Añadiendo collide entre los desarrolladores y el mobiliario
+		for(i in this.arrFurniture) {
+			var furniture = this.arrFurniture[i];
+			for(j in this.arrDevelopers){
+				var developer = this.arrDevelopers[j];
+				this.game.physics.arcade.collide(developer.getSprite(), furniture.getSprite());
+			}
+		}
 
 		// Actualizando panel de estado
 		this.updatePanelStatus();
 		
 	}
+	
 
-	DALevel1.prototype.updatePanelStatus = function () {
+	DALevel2.prototype.updatePanelStatus = function () {
+
 
 		// Gestionando vidas
 
@@ -182,7 +209,7 @@ var DALevel1 = (function() {
 	/**
 	* Método para finalizar el nivel
 	*/
-	DALevel1.prototype.finishLevel = function(designer, door) {
+	DALevel2.prototype.finishLevel = function(designer, door) {
 		
 		// Para finalizar el nivel necesitamos que el diseñador haya cogido el cactus
 		if(designer.hasCactus) {
@@ -190,10 +217,10 @@ var DALevel1 = (function() {
 		}
 	}
 
-	DALevel1.prototype.gameOver = function() {
+	DALevel2.prototype.gameOver = function() {
 		console.log("GAME OVER!");
 	}
 
-	return DALevel1;
+	return DALevel2;
 
 })();
