@@ -103,9 +103,9 @@ var DALevel2 = (function() {
 		
 		// Creando el programador
 		this.arrDevelopers.push(new DADeveloper(this.game, 125, 200, 60, "char_developer_01", "up"));
-		this.arrDevelopers.push(new DADeveloper(this.game, 600, 90, 60, "char_developer_01", "right"));
+		this.arrDevelopers.push(new DADeveloper(this.game, 600, 160, 60, "char_developer_01", "right"));
 		this.arrDevelopers.push(new DADeveloper(this.game, 400, 120, 60, "char_developer_01", "up"));
-		this.arrDevelopers.push(new DADeveloper(this.game, 600, 90, 60, "char_developer_01", "left"));
+		this.arrDevelopers.push(new DADeveloper(this.game, 600, 130, 60, "char_developer_01", "left"));
 		this.arrDevelopers.push(new DADeveloper(this.game, 300, 120, 60, "char_developer_01", "left"));
 
 		// Creamos el mobiliario
