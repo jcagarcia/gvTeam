@@ -98,8 +98,10 @@ var DAGame = (function() {
 		// Creamos el mobiliario
 		this.arrFurniture.push(new DAFurniture(this.game, 400, 100, "table"));
 
-		// Subimos arriba del todo el panel de estado
+		// Subimos arriba del todo
 		this.game.world.bringToTop(this.pnlStatus);
+		this.game.world.bringToTop(this.designer.getSprite());
+		
 	}
 
 	/**
@@ -109,8 +111,8 @@ var DAGame = (function() {
 
 		this.designer.getSprite().tint = 0xffffff;
 
-		// Moviendo el diseñador a velocidad 3
-		this.designer.moveDesigner(250);
+		// Moviendo el diseñador a velocidad 150
+		this.designer.moveDesigner(150);
 
 		for(i in this.arrDevelopers){
 			var developer = this.arrDevelopers[i];
@@ -140,6 +142,16 @@ var DAGame = (function() {
 		this.updateHearths();
 		
 	}
+	
+	//DAGame.prototype.render = function() {
+
+    //this.game.debug.body(this.designer.getSprite());
+	
+	//for(i in this.arrFurniture) {
+	//		var furniture = this.arrFurniture[i];
+	//		this.game.debug.body(furniture.getSprite());
+	//}
+//}
 
 	DAGame.prototype.updateHearths = function () {
 		var hearths = this.designer.getSprite().hearths;

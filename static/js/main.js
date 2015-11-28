@@ -9,7 +9,8 @@ var state = {
 	init: init,
 	preload: preload,
 	update: update,
-	create: create
+	create: create//,
+	//render: render
 };
 
 // Creamos un nuevo juego Phaser
@@ -38,3 +39,7 @@ function update() {
 function create() {
 	dAGame.create();
 }
+
+//function render() {
+//	dAGame.render();
+//}

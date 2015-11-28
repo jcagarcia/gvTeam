@@ -33,6 +33,10 @@ var DADesigner = (function() {
 
 		this.game.physics.arcade.enable(this.designer);
 		this.designer.enableBody = true;
+		
+		// Fijamos el tamaño para que colisione con la base
+		this.designer.body.setSize(32, 10, 0, 80);
+		
 		this.designer.body.collideWorldBounds = true;
 
 		this.designer.animations.play("right");
