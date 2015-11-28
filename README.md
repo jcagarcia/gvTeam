@@ -14,7 +14,7 @@ This game was created during the [#geekHackathon](http://hackathon.geekshubsacad
 
 These are the authors of **Developers Attack!** game.
 
-[Juan Carlos García](https://github.com/jcagarcia)
-[Eduardo Canals](https://github.com/knals)
-[Lluis Marques](https://github.com/LluisMC)
-[Daniel Martinez](https://github.com/danielmizquierdo)
+* [Juan Carlos García](https://github.com/jcagarcia)
+* [Eduardo Canals](https://github.com/knals)
+* [Lluis Marques](https://github.com/LluisMC)
+* [Daniel Martinez](https://github.com/danielmizquierdo)
