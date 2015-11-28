@@ -96,7 +96,7 @@ var DAGame = (function() {
 		this.designer.designer.tint = 0xffffff;
 
 		// Moviendo el diseñador a velocidad 3
-		this.designer.moveDesigner(3);
+		this.designer.moveDesigner(250);
 
 		for(i in this.arrDevelopers){
 			var developer = this.arrDevelopers[i];
@@ -113,13 +113,13 @@ var DAGame = (function() {
 		// Añadiendo collide entre el diseñador y el background
 		for(i in this.arrBackgrounds) {
 			var background = this.arrBackgrounds[i];
-			this.game.physics.arcade.collide(this.designer.getSprite(), this.arrBackgrounds[0]);
+			this.game.physics.arcade.collide(this.designer.getSprite(), background);
 		}
 
 		// Añadiendo collide entre el diseñador y el mobiliario
 		for(i in this.arrFurniture) {
 			var furniture = this.arrFurniture[i];
-			this.game.physics.arcade.overlap(this.designer.getSprite(), furniture.getSprite(), this.designer.stop);
+			this.game.physics.arcade.collide(this.designer.getSprite(), furniture.getSprite());
 		}
 		
 	}

@@ -26,9 +26,11 @@ var DAFurniture = (function() {
 	DAFurniture.prototype.createFurniture = function() {
 		this.furniture = this.game.add.sprite(this.posX, this.posY, this.spriteLabel);
 		this.furniture.scale.setTo(2,2);
-
-		this.furniture.enableBody = true;
 		this.game.physics.arcade.enable(this.furniture);
+		this.furniture.enableBody = true;
+		this.furniture.body.collideWorldBounds = true;
+		this.furniture.body.immovable = true;
+
 	}
 
 	/**

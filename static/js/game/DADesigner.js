@@ -23,7 +23,7 @@ var DADesigner = (function() {
 	* Método para crear el diseñador utilizando un sprite
 	*/
 	DADesigner.prototype.createDesigner = function(){
-		this.designer = this.game.add.sprite(32, 100, 'char_designer');
+		this.designer = this.game.add.sprite(32, 150, 'char_designer');
 		this.designer.scale.setTo(2,2);
 
 		// Añadimos animaciones
@@ -34,7 +34,6 @@ var DADesigner = (function() {
 
 		this.game.physics.arcade.enable(this.designer);
 		this.designer.enableBody = true;
-		this.designer.body.immovable = true;
 		this.designer.body.collideWorldBounds = true;
 
 		this.designer.animations.play("right");
@@ -44,29 +43,31 @@ var DADesigner = (function() {
 	* Método para mover el diseñador si alguna tecta del teclado está pulsada
 	*/
 	DADesigner.prototype.moveDesigner = function(velocidad) {
-
+	
 		if (this.cursors.right.isDown){ // Moviendo hacia la derecha
-
-			this.designer.x += velocidad;
+		
+			this.designer.body.velocity.x = velocidad;
 			this.designer.animations.play("right");
-
-		}else if (this.cursors.left.isDown){ // Moviendo hacia la izquierda
-
-			this.designer.x -= velocidad;
+		
+		} else if (this.cursors.left.isDown){ // Moviendo hacia la izquierda
+		
+			this.designer.body.velocity.x = -velocidad;
 			this.designer.animations.play("left");
-
+		
 		} else if (this.cursors.up.isDown){ // Moviendo hacia arriba
-
-			this.designer.y -= velocidad;
+		
+			this.designer.body.velocity.y = -velocidad;
 			this.designer.animations.play("up");
-
+		
 		} else if (this.cursors.down.isDown){ // Moviendo hacia abajo
-
-			this.designer.y += velocidad;
+		
+			this.designer.body.velocity.y = velocidad;
 			this.designer.animations.play("down");
-
+		
 		} else { // Si no se mueve, parar la animación
-			this.designer.animations.stop();	
+			this.designer.body.velocity.x =0;
+			this.designer.body.velocity.y =0; 
+			this.designer.animations.stop(); 
 		}
 	}
 
