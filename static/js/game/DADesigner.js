@@ -14,7 +14,6 @@ var DADesigner = (function() {
 
 		// Generando diseñador
 		this.createDesigner();
-
 		
 	}
 
@@ -37,6 +36,8 @@ var DADesigner = (function() {
 		this.designer.body.collideWorldBounds = true;
 
 		this.designer.animations.play("right");
+
+		this.designer.hearths = 3;
 	}
 
 	/**
@@ -78,6 +79,16 @@ var DADesigner = (function() {
 
 		// En primer lugar marcamos como golpeado al diseñador
 		designer.tint = 0xE41937;
+
+		// Comprobamos que no haya sido golpeado ya por este developer
+		if(designer.lastCollisionWith != developer){
+			designer.hearths--;
+		}
+
+		// Guardamos al developer contra el que hemos colisionado
+		designer.lastCollisionWith = developer;
+
+
 	}
 
 	/**

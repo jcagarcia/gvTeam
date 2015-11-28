@@ -53,6 +53,7 @@ var DAGame = (function() {
 
 		// Cargando objetos
 		this.game.load.image('door_1', 'static/assets/images/objects/door_1.jpg', 8, 34);
+		this.game.load.image('hearth_1', 'static/assets/images/objects/hearth_1.png', 32, 32);
 
 		// Cargando mobiliario
 		this.game.load.image('table', 'static/assets/images/furniture/table.png', 55, 41);
@@ -69,6 +70,16 @@ var DAGame = (function() {
 		// Inicializando physics
 		this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
+		// Creando grupo para panel superior
+		this.pnlStatus = this.game.add.group();
+		this.hearth1 = this.game.add.sprite(GAME_WIDTH - 150, 10, "hearth_1");
+		this.hearth2 = this.game.add.sprite(GAME_WIDTH - 100, 10, "hearth_1");
+		this.hearth3 = this.game.add.sprite(GAME_WIDTH - 50, 10, "hearth_1");
+		this.pnlStatus.add(this.hearth1);
+		this.pnlStatus.add(this.hearth2);
+		this.pnlStatus.add(this.hearth3);
+		
+
 		// Creamos oficina
 		this.office = new DAOffice(this.game);
 		// Creamos el suelo de la oficina
@@ -80,12 +91,15 @@ var DAGame = (function() {
 		this.designer = new DADesigner(this.game, this.cursors);
 		
 		// Creando el programador
-		//this.arrDevelopers.push(new DADeveloper(this.game, 125, 200, "char_developer_01"));
-		//this.arrDevelopers.push(new DADeveloper(this.game, 600, 90, "char_developer_01"));
-		//this.arrDevelopers.push(new DADeveloper(this.game, 300, 20, "char_developer_01"));
+		this.arrDevelopers.push(new DADeveloper(this.game, 125, 200, "char_developer_01"));
+		this.arrDevelopers.push(new DADeveloper(this.game, 600, 90, "char_developer_01"));
+		this.arrDevelopers.push(new DADeveloper(this.game, 300, 20, "char_developer_01"));
 
 		// Creamos el mobiliario
 		this.arrFurniture.push(new DAFurniture(this.game, 400, 100, "table"));
+
+		// Subimos arriba del todo el panel de estado
+		this.game.world.bringToTop(this.pnlStatus);
 	}
 
 	/**
@@ -93,7 +107,7 @@ var DAGame = (function() {
 	*/
 	DAGame.prototype.update = function() {
 
-		this.designer.designer.tint = 0xffffff;
+		this.designer.getSprite().tint = 0xffffff;
 
 		// Moviendo el diseñador a velocidad 3
 		this.designer.moveDesigner(250);
@@ -121,7 +135,23 @@ var DAGame = (function() {
 			var furniture = this.arrFurniture[i];
 			this.game.physics.arcade.collide(this.designer.getSprite(), furniture.getSprite());
 		}
+
+		// Actualizando panel de vidas
+		this.updateHearths();
 		
+	}
+
+	DAGame.prototype.updateHearths = function () {
+		var hearths = this.designer.getSprite().hearths;
+
+		if(hearths == 2) {
+			this.hearth1.kill();
+		}else if(hearths == 1) {
+			this.hearth2.kill();
+		}else if (hearths == 0){
+			this.hearth3.kill();
+			this.gameOver();
+		}
 	}
 
 	/**
@@ -129,6 +159,10 @@ var DAGame = (function() {
 	*/
 	DAGame.prototype.finishLevel = function(designer, door) {
 		console.log("Nivel finalizado!");
+	}
+
+	DAGame.prototype.gameOver = function() {
+		console.log("GAME OVER!");
 	}
 
 	return DAGame;
