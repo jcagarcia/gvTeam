@@ -92,7 +92,7 @@ var DALevel1 = (function() {
 		this.door = this.office.createExitDoor(GAME_WIDTH - 250, 20);
 
 		// Creando el diseñador
-		this.designer = new DADesigner(this.game, this.cursors);
+		this.designer = new DADesigner(this.game, this.cursors, 32, 150, "right");
 		
 
 		// Creamos el mobiliario

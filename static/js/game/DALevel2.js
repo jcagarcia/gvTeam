@@ -95,12 +95,12 @@ var DALevel2 = (function() {
 		this.door = this.office.createExitDoor(GAME_WIDTH - 250, 20);
 
 		// Creando el diseñador
-		this.designer = new DADesigner(this.game, this.cursors);
+		this.designer = new DADesigner(this.game, this.cursors, GAME_WIDTH - 250, GAME_HEIGHT - 48, "up");
 		
 		// Creando el programador
-		//this.arrDevelopers.push(new DADeveloper(this.game, 125, 200, "char_developer_01"));
-		//this.arrDevelopers.push(new DADeveloper(this.game, 600, 90, "char_developer_01"));
-		//this.arrDevelopers.push(new DADeveloper(this.game, 300, 20, "char_developer_01"));
+		this.arrDevelopers.push(new DADeveloper(this.game, 125, 200, "char_developer_01"));
+		this.arrDevelopers.push(new DADeveloper(this.game, 600, 90, "char_developer_01"));
+		this.arrDevelopers.push(new DADeveloper(this.game, 300, 20, "char_developer_01"));
 
 		// Creamos el mobiliario
 		this.arrFurniture.push(new DAFurniture(this.game, 400, 100, "table"));

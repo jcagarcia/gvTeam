@@ -1,10 +1,16 @@
 var DADesigner = (function() {
 
 	// Constructor de la clase diseñador
-	function DADesigner(phaserGame, cursors) {
+	function DADesigner(phaserGame, cursors, posX, posY, initialPosition) {
 
 		// Guardando game
 		this.game = phaserGame;
+
+		// Guardando posicion inicial
+		this.posX = posX;
+		this.posY = posY;
+
+		this.initialPosition = initialPosition;
 
 		// Guardando cursores
 		this.cursors = cursors;
@@ -22,7 +28,7 @@ var DADesigner = (function() {
 	* Método para crear el diseñador utilizando un sprite
 	*/
 	DADesigner.prototype.createDesigner = function(){
-		this.designer = this.game.add.sprite(32, 150, 'char_designer');
+		this.designer = this.game.add.sprite(this.posX, this.posY, 'char_designer');
 		this.designer.scale.setTo(2,2);
 
 		// Añadimos animaciones
@@ -39,7 +45,7 @@ var DADesigner = (function() {
 		
 		this.designer.body.collideWorldBounds = true;
 
-		this.designer.animations.play("right");
+		this.designer.animations.play(this.initialPosition);
 
 		this.designer.hearths = 3;
 		this.designer.hasCactus = false;
