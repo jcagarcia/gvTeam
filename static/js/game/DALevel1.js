@@ -186,7 +186,7 @@ var DALevel1 = (function() {
 		
 		// Para finalizar el nivel necesitamos que el diseñador haya cogido el cactus
 		if(designer.hasCactus) {
-			console.log("LEVEL FINISHED");
+			GAME_LEVEL++;
 		}
 	}
 

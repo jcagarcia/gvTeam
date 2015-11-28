@@ -2,9 +2,6 @@ var DAGame = (function() {
 
 	// Constructor de la clase DAGame
 	function DAGame (phaserGame) {
-		// Inicializamos nivel 1
-		this.currentLevel = 0;
-
 		this.arrLevels = [];
 
 		this.arrLevels.push(new DALevel1(phaserGame));
@@ -15,28 +12,34 @@ var DAGame = (function() {
 	* Método que inicializa el escenario básico del juego
 	*/
 	DAGame.prototype.init = function() {
-		this.arrLevels[this.currentLevel].init();
+		for(i in this.arrLevels) {
+			var level = this.arrLevels[i];
+			level.init();
+		}
 	}
 
 	/**
 	* Método que carga los assets y recursos necesarios
 	*/
 	DAGame.prototype.preload = function() {
-		this.arrLevels[this.currentLevel].preload();
+		for(i in this.arrLevels) {
+			var level = this.arrLevels[i];
+			level.preload();
+		}
 	}
 
 	/**
 	* Método para crear el estado in¡cial del juego
 	*/
 	DAGame.prototype.create = function() {
-		this.arrLevels[this.currentLevel].create();
+		this.arrLevels[GAME_LEVEL].create();
 	}
 
 	/**
 	* Loop que actualizará el juego
 	*/
 	DAGame.prototype.update = function() {
-		this.arrLevels[this.currentLevel].update();
+		this.arrLevels[GAME_LEVEL].update();
 	}
 
 	return DAGame;

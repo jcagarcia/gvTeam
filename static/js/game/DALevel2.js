@@ -1,7 +1,7 @@
 var DALevel2 = (function() {
 
 	// Constructor de la clase DAGame
-	function DALevel2 (phaserGame) {
+	function DALevel2 (phaserGame, currentGame) {
 
 		// Creando el juego
 		this.game = phaserGame;
@@ -118,6 +118,11 @@ var DALevel2 = (function() {
 	* Loop que actualizará el juego
 	*/
 	DALevel2.prototype.update = function() {
+
+		// Necesitamos crear primero
+		if(this.designer == undefined) {
+			this.create();
+		}
 
 		this.designer.getSprite().tint = 0xffffff;
 

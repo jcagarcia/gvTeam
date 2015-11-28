@@ -38,6 +38,9 @@ var DADeveloper = (function() {
 		this.game.physics.arcade.enable(this.developer);
 		this.developer.body.collideWorldBounds = true;
 		this.developer.body.immovable = true;
+
+		// Fijamos el tamaño para que colisione con la mitad
+		this.developer.body.setSize(25, 30, 8, 30);
 	}
 	
 	// Generando ruta 1 programador 
