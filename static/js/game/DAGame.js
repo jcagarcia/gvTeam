@@ -84,10 +84,10 @@ var DAGame = (function() {
 		for(i in this.arrDevelopers){
 			var developer = this.arrDevelopers[i];
 
-			developer.getDeveloper().animations.play("up");
+			developer.getSprite().animations.play("up");
 
 			// Añadiendo collide entre diseñadores y programadores
-			this.game.physics.arcade.overlap(this.designer.getDesigner(), developer.getDeveloper(), this.designer.tryToKill);
+			this.game.physics.arcade.overlap(this.designer.getSprite(), developer.getSprite(), this.designer.tryToKill);
 		}	
 		
 	}

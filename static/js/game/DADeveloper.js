@@ -34,8 +34,8 @@ var DADeveloper = (function() {
 		this.developer.animations.add("left", [8,9,10,11], 10, true);
 		this.developer.animations.add("down", [12,13,14,15], 10, true);
 
-		this.game.physics.arcade.enable(this.developer);
 		this.developer.enableBody = true;
+		this.game.physics.arcade.enable(this.developer);
 		this.developer.body.collideWorldBounds = true;
 	}
 	
@@ -51,7 +51,7 @@ var DADeveloper = (function() {
 	/**
 	* Método que devuelve el developer
 	*/
-	DADeveloper.prototype.getDeveloper = function() {
+	DADeveloper.prototype.getSprite = function() {
 		return this.developer;
 	}
 

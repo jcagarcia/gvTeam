@@ -32,8 +32,8 @@ var DADesigner = (function() {
 		this.designer.animations.add("left", [8,9,10,11], 10, true);
 		this.designer.animations.add("down", [12,13,14,15], 10, true);
 
-		this.game.physics.arcade.enable(this.designer);
 		this.designer.enableBody = true;
+		this.game.physics.arcade.enable(this.designer);
 		this.designer.body.collideWorldBounds = true;
 
 	}
@@ -75,13 +75,12 @@ var DADesigner = (function() {
 
 		// En primer lugar marcamos como golpeado al diseñador
 		designer.tint = 0xE41937;
-
 	}
 
 	/**
 	* Método que devuelve el designer
 	*/
-	DADesigner.prototype.getDesigner = function() {
+	DADesigner.prototype.getSprite = function() {
 		return this.designer;
 	}
 
