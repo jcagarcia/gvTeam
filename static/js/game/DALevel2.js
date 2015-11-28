@@ -63,6 +63,10 @@ var DALevel2 = (function() {
 
 		// Cargando mobiliario
 		this.game.load.image('table', 'static/assets/images/furniture/table.png', 55, 41);
+		this.game.load.image('round_table', 'static/assets/images/furniture/round_table.png', 62, 52);
+		this.game.load.image('long_table', 'static/assets/images/furniture/long_table.png', 28, 73);
+		this.game.load.image('single_armchair_front', 'static/assets/images/furniture/single_armchair_front.png', 32, 63);
+		this.game.load.image('single_armchair_back', 'static/assets/images/furniture/single_armchair_back.png', 32, 47);
 		this.game.load.image('door_1', 'static/assets/images/furniture/door_1.png', 32, 64);
 
 		// Cargando backgrounds
@@ -105,10 +109,24 @@ var DALevel2 = (function() {
 		this.arrDevelopers.push(new DADeveloper(this.game, 300, 120, 60, "char_developer_01", "left"));
 
 		// Creamos el mobiliario
-		this.arrFurniture.push(new DAFurniture(this.game, 400, 100, "table"));
+		this.arrFurniture.push(new DAFurniture(this.game, 450, 120, "single_armchair_front"));
 
-		// Creando el cactus
-		this.cactus = new DACactus(this.game, 400, 100, "cactus_1");
+		this.arrFurniture.push(new DAFurniture(this.game, 625, 150, "table"));
+		
+		var tableWithChair = new DAFurniture(this.game, 425, 150, "table");
+		var tableWithChair1 = new DAFurniture(this.game, 225, 275, "table");
+		this.arrFurniture.push(tableWithChair);
+		this.arrFurniture.push(tableWithChair1);
+
+		this.arrFurniture.push(new DAFurniture(this.game, 225, 150, "table"));
+		this.arrFurniture.push(new DAFurniture(this.game, 625, 275, "table"));
+		this.arrFurniture.push(new DAFurniture(this.game, 425, 275, "table"));
+		this.arrFurniture.push(new DAFurniture(this.game, 225, 275, "table"));
+		this.arrFurniture.push(new DAFurniture(this.game, 20, 200, "round_table"));
+	    this.arrFurniture.push(new DAFurniture(this.game, 250, 285, "single_armchair_back"));
+		this.arrFurniture.push(new DAFurniture(this.game, 40, 235, "single_armchair_back"));
+
+		this.cactus = new DACactus(this.game, 625, 150, "cactus_1");
 
 		// Subimos arriba del todo los objetos
 		this.game.world.bringToTop(this.pnlStatus);
