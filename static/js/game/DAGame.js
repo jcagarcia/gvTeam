@@ -8,10 +8,7 @@ var DAGame = (function() {
 		this.arrLevels.push(new DALevel1(phaserGame));
 		this.arrLevels.push(new DALevel2(phaserGame));
 		this.arrLevels.push(new DAGameOver(phaserGame));
-		/*this.arrLevels.push(new DALevel3(phaserGame));
-		
-		this.arrLevels.push(new DAFinishGame(phaserGame));*/
-
+		this.arrLevels.push(new DAFinishGame(phaserGame));
 	}
 
 	/**

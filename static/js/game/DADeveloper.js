@@ -1,7 +1,7 @@
 var DADeveloper = (function() {
 
 	// Constructor de la clase developer
-	function DADeveloper(phaserGame, posX, posY, spritSheetLabel) {
+	function DADeveloper(phaserGame, posX, posY, velocity, spritSheetLabel, startPosition) {
 
 		// Guardando game
 		this.game = phaserGame;
@@ -16,8 +16,15 @@ var DADeveloper = (function() {
 		// Guardamos el spritSheet
 		this.spritSheetLabel = spritSheetLabel;
 
+		// Guardamos la posicion inicial
+		this.startPosition = startPosition;
+
 		// Generando programador
 		this.createDeveloper();
+
+		this.developerVelocity = velocity;	
+
+		this.inMovement = false;
 
 	}
 
@@ -25,6 +32,8 @@ var DADeveloper = (function() {
 	* Método para crear el developer utilizando un sprite
 	*/
 	DADeveloper.prototype.createDeveloper = function(){
+
+
 		this.developer = this.game.add.sprite(this.posX, this.posY, this.spritSheetLabel);
 		this.developer.scale.setTo(2,2);
 
@@ -33,23 +42,48 @@ var DADeveloper = (function() {
 		this.developer.animations.add("right", [4,5,6,7], 10, true);
 		this.developer.animations.add("left", [8,9,10,11], 10, true);
 		this.developer.animations.add("down", [12,13,14,15], 10, true);
-
 		this.developer.enableBody = true;
+		
 		this.game.physics.arcade.enable(this.developer);
+		//this.developer.body.moves = true;
+		this.developer.body.allowGravity = true; 
+		this.developer.body.velocity.setTo(this.developerVelocity, this.developerVelocity);
+		this.developer.body.bounce.setTo(1,1);
 		this.developer.body.collideWorldBounds = true;
-		this.developer.body.immovable = true;
 
 		// Fijamos el tamaño para que colisione con la mitad
 		this.developer.body.setSize(25, 30, 8, 30);
 	}
 	
 	// Generando ruta 1 programador 
-	DADeveloper.prototype.moveDeveloperToXY = function(finalPosX, finalPosY, directionalAxis) {
-		initialPosX = this.posX;
-		initialPosY = this.posY;
-		
-		this.game.physics.arcade.moveToXY(this.developer, finalPosX, finalPosY);
+	DADeveloper.prototype.moveDeveloperToXY = function(fPosX, fPosY) {
+		this.posX = this.developer.x;
+		this.posY = this.developer.y;
 
+		if (!this.inMovement){
+
+			this.inMovement = true;
+
+			if(this.posX > fPosX){
+				this.developer.body.velocity.x = -this.developerVelocity;
+				this.developer.animations.play(this.startPosition);
+			}
+			
+			if(this.posX < fPosX){
+				this.developer.body.velocity.x = +this.developerVelocity;
+				this.developer.animations.play(this.startPosition);
+			}
+
+			if(this.posY > fPosY){
+				this.developer.body.velocity.y = -this.developerVelocity;
+				this.developer.animations.play(this.startPosition);
+			}
+
+			if(this.posX < fPosY){
+				this.developer.body.velocity.y = +this.developerVelocity;
+				this.developer.animations.play(this.startPosition);
+			}
+		}
 	}
 
 	/**
