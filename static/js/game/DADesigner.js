@@ -23,7 +23,7 @@ var DADesigner = (function() {
 	* Método para crear el diseñador utilizando un sprite
 	*/
 	DADesigner.prototype.createDesigner = function(){
-		this.designer = this.game.add.sprite(32, 32, 'char_designer');
+		this.designer = this.game.add.sprite(32, 100, 'char_designer');
 		this.designer.scale.setTo(2,2);
 
 		// Añadimos animaciones
@@ -32,10 +32,12 @@ var DADesigner = (function() {
 		this.designer.animations.add("left", [8,9,10,11], 10, true);
 		this.designer.animations.add("down", [12,13,14,15], 10, true);
 
-		this.designer.enableBody = true;
 		this.game.physics.arcade.enable(this.designer);
+		this.designer.enableBody = true;
+		this.designer.body.immovable = true;
 		this.designer.body.collideWorldBounds = true;
 
+		this.designer.animations.play("right");
 	}
 
 	/**
@@ -76,6 +78,14 @@ var DADesigner = (function() {
 		// En primer lugar marcamos como golpeado al diseñador
 		designer.tint = 0xE41937;
 	}
+
+	/**
+	* Método que intenta parar al diseñador
+	*/
+	DADesigner.prototype.stop = function(designer, furniture) {
+
+	}
+
 
 	/**
 	* Método que devuelve el designer

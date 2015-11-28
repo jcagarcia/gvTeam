@@ -9,6 +9,9 @@ var DAOffice = (function() {
 		// Variable para guardar la puerta
 		this.door = undefined;
 
+		// Guardamos array de fondos
+		this.arrBackgrounds = [];
+
 	}
 	/**
 	* Método para crear suelo
@@ -33,17 +36,27 @@ var DAOffice = (function() {
 	* Método para crear el fondo
 	*/
 	DAOffice.prototype.createBackground = function(spriteLabel) {
+
 		this.background = this.game.add.sprite(0, 0, spriteLabel);
 		this.background.scale.setTo(2,2);
 
-		this.background.enableBody = true;
+		
 		this.game.physics.arcade.enable(this.background);
+		this.background.enableBody = true;
+		this.background.body.immovable = true;
 
 		this.background2 = this.game.add.sprite(this.background.width - 40, 0, spriteLabel);
 		this.background2.scale.setTo(2,2);
 		
+		this.game.physics.arcade.enable(this.background2, Phaser.Physics.ARCADE);
 		this.background2.enableBody = true;
-		this.game.physics.arcade.enable(this.background2);
+		this.background2.body.immovable = true;
+
+		// Guardando todos los backgrounds
+		this.arrBackgrounds.push(this.background);
+		this.arrBackgrounds.push(this.background2);
+
+		return this.arrBackgrounds;
 	}
 
 	/**

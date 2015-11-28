@@ -31,6 +31,13 @@ var DAFurniture = (function() {
 		this.game.physics.arcade.enable(this.furniture);
 	}
 
+	/**
+	* Método para obtener el sprite del furniture
+	*/
+	DAFurniture.prototype.getSprite = function() {
+		return this.furniture;
+	}
+
 	return DAFurniture;
 
 })();
