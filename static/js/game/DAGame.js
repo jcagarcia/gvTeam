@@ -15,6 +15,9 @@ var DAGame = (function() {
 		// Creando variable para la puerta de salida
 		this.door = undefined;
 
+		// Creando variable para el cactus
+		this.cactus = undefined;
+
 		// Creando variable para el fondo
 		this.arrBackgrounds = undefined;
 
@@ -23,6 +26,9 @@ var DAGame = (function() {
 		
 		// Creamos array de mobiliario
 		this.arrFurniture = [];
+
+		// Variable para almacenar el tiempo entre vidas
+		this.timeBetweenKills = 0;
 	}
 
 	/**
@@ -54,6 +60,7 @@ var DAGame = (function() {
 		// Cargando objetos
 		this.game.load.image('door_1', 'static/assets/images/objects/door_1.jpg', 8, 34);
 		this.game.load.image('hearth_1', 'static/assets/images/objects/hearth_1.png', 32, 32);
+		this.game.load.image('cactus_1', 'static/assets/images/objects/cactus_1.png', 32, 32);
 
 		// Cargando mobiliario
 		this.game.load.image('table', 'static/assets/images/furniture/table.png', 55, 41);
@@ -98,7 +105,10 @@ var DAGame = (function() {
 		// Creamos el mobiliario
 		this.arrFurniture.push(new DAFurniture(this.game, 400, 100, "table"));
 
-		// Subimos arriba del todo
+		// Creando el cactus
+		this.cactus = new DACactus(this.game, 400, 100, "cactus_1");
+
+		// Subimos arriba del todo los objetos
 		this.game.world.bringToTop(this.pnlStatus);
 		this.game.world.bringToTop(this.designer.getSprite());
 		
@@ -154,6 +164,7 @@ var DAGame = (function() {
 //}
 
 	DAGame.prototype.updateHearths = function () {
+
 		var hearths = this.designer.getSprite().hearths;
 
 		if(hearths == 2) {
@@ -163,6 +174,13 @@ var DAGame = (function() {
 		}else if (hearths == 0){
 			this.hearth3.kill();
 			this.gameOver();
+		}
+
+		this.timeBetweenKills++;
+
+		if(this.timeBetweenKills >= 200){
+			this.timeBetweenKills = 0;
+			this.designer.getSprite().lastCollisionWith = undefined;
 		}
 	}
 
