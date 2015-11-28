@@ -98,9 +98,9 @@ var DAGame = (function() {
 		this.designer = new DADesigner(this.game, this.cursors);
 		
 		// Creando el programador
-		this.arrDevelopers.push(new DADeveloper(this.game, 125, 200, "char_developer_01"));
-		this.arrDevelopers.push(new DADeveloper(this.game, 600, 90, "char_developer_01"));
-		this.arrDevelopers.push(new DADeveloper(this.game, 300, 20, "char_developer_01"));
+		//this.arrDevelopers.push(new DADeveloper(this.game, 125, 200, "char_developer_01"));
+		//this.arrDevelopers.push(new DADeveloper(this.game, 600, 90, "char_developer_01"));
+		//this.arrDevelopers.push(new DADeveloper(this.game, 300, 20, "char_developer_01"));
 
 		// Creamos el mobiliario
 		this.arrFurniture.push(new DAFurniture(this.game, 400, 100, "table"));
@@ -137,6 +137,9 @@ var DAGame = (function() {
 		// Añadiendo overlap entre el diseñador y la puerta de salida
 		this.game.physics.arcade.overlap(this.designer.getSprite(), this.door, this.finishLevel);
 
+		// Añadiendo overlap entre el disñador y el cactus
+		this.game.physics.arcade.overlap(this.designer.getSprite(), this.cactus.getSprite(), this.designer.catchCactus);
+
 		// Añadiendo collide entre el diseñador y el background
 		for(i in this.arrBackgrounds) {
 			var background = this.arrBackgrounds[i];
@@ -167,8 +170,8 @@ var DAGame = (function() {
 			}
 		}
 
-		// Actualizando panel de vidas
-		this.updateHearths();
+		// Actualizando panel de estado
+		this.updatePanelStatus();
 		
 	}
 	
@@ -182,7 +185,10 @@ var DAGame = (function() {
 	//}
 //}
 
-	DAGame.prototype.updateHearths = function () {
+	DAGame.prototype.updatePanelStatus = function () {
+
+
+		// Gestionando vidas
 
 		var hearths = this.designer.getSprite().hearths;
 
@@ -201,13 +207,23 @@ var DAGame = (function() {
 			this.timeBetweenKills = 0;
 			this.designer.getSprite().lastCollisionWith = undefined;
 		}
+
+		// Gestionando el cactus en el panel de estado
+		if(this.designer.getSprite().hasCactus) {
+			this.cactusStatus = this.game.add.sprite(GAME_WIDTH - 200, 5, "cactus_1");
+			this.pnlStatus.add(this.cactusStatus);
+		}
 	}
 
 	/**
 	* Método para finalizar el nivel
 	*/
 	DAGame.prototype.finishLevel = function(designer, door) {
-		console.log("Nivel finalizado!");
+		
+		// Para finalizar el nivel necesitamos que el diseñador haya cogido el cactus
+		if(designer.hasCactus) {
+			console.log("LEVEL FINISHED");
+		}
 	}
 
 	DAGame.prototype.gameOver = function() {

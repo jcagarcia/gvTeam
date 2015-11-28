@@ -66,6 +66,7 @@ var DAOffice = (function() {
 
 		this.door = this.game.add.sprite(posX, posY, 'door_1');
 		this.door.scale.setTo(3,3);
+		this.door.tint = 0xE41937;
 
 		this.door.enableBody = true;
 		this.game.physics.arcade.enable(this.door);
