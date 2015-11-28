@@ -56,6 +56,9 @@ var DAGame = (function() {
 
 		// Cargando mobiliario
 		this.game.load.image('table', 'static/assets/images/furniture/table.png', 55, 41);
+
+		// Cargando backgrounds
+		this.game.load.image('background_1', 'static/assets/images/backgrounds/background_1.jpg', 156, 63);
 	}
 
 	/**
@@ -66,8 +69,9 @@ var DAGame = (function() {
 		// Creamos oficina
 		this.office = new DAOffice(this.game);
 		// Creamos el suelo de la oficina
-		this.office.createFloor();
+		this.office.createFloor("floor_wood");
 		this.door = this.office.createExitDoor(GAME_WIDTH - 10, GAME_HEIGHT - 150);
+		this.office.createBackground("background_1");
 
 		// Creando el diseñador
 		this.designer = new DADesigner(this.game, this.cursors);

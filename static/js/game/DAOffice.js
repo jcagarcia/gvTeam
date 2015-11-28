@@ -13,7 +13,7 @@ var DAOffice = (function() {
 	/**
 	* Método para crear suelo
 	*/
-	DAOffice.prototype.createFloor = function() {
+	DAOffice.prototype.createFloor = function(spriteLabel) {
 		var floorWidth = 0;
 		var floorHeight = 0;
 		while(floorWidth < GAME_WIDTH){
@@ -21,12 +21,29 @@ var DAOffice = (function() {
 			floorHeight = 0;
 
 			while(floorHeight < GAME_HEIGHT) {
-				this.game.add.sprite(floorWidth, floorHeight, 'floor_wood');
+				this.game.add.sprite(floorWidth, floorHeight, spriteLabel);
 				floorHeight += 32;
 			}
 			
 			floorWidth += 32;
 		}
+	}
+
+	/**
+	* Método para crear el fondo
+	*/
+	DAOffice.prototype.createBackground = function(spriteLabel) {
+		this.background = this.game.add.sprite(0, 0, spriteLabel);
+		this.background.scale.setTo(2,2);
+
+		this.background.enableBody = true;
+		this.game.physics.arcade.enable(this.background);
+
+		this.background2 = this.game.add.sprite(this.background.width - 40, 0, spriteLabel);
+		this.background2.scale.setTo(2,2);
+		
+		this.background2.enableBody = true;
+		this.game.physics.arcade.enable(this.background2);
 	}
 
 	/**
