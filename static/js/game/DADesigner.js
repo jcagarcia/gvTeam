@@ -42,6 +42,7 @@ var DADesigner = (function() {
 		this.designer.animations.play("right");
 
 		this.designer.hearths = 3;
+		this.designer.hasCactus = false;
 	}
 
 	/**
@@ -91,8 +92,18 @@ var DADesigner = (function() {
 
 		// Guardamos al developer contra el que hemos colisionado
 		designer.lastCollisionWith = developer;
+	}
 
+	/**
+	* Método que coge el cactus
+	*/
+	DADesigner.prototype.catchCactus = function(designer, cactus) {
 
+		// Eliminamos el sprite del cactus
+		cactus.kill();
+
+		// Marcamos al diseñador como que tiene el cactus
+		designer.hasCactus = true;
 	}
 
 	/**
