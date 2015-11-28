@@ -1,7 +1,7 @@
 var DAFurniture = (function() {
 
 	// Constructor de la clase mobiliario
-	function DAFurniture(phaserGame, posX, posY) {
+	function DAFurniture(phaserGame, posX, posY, spriteLabel) {
 
 		// Guardando game
 		this.game = phaserGame;
@@ -10,17 +10,25 @@ var DAFurniture = (function() {
 		this.posX = posX;
 		this.posY = posY;
 
-		// TODO: Crear mobiliario usando assets
+		// Variable para guardar el mobiliario
+		this.furniture = undefined;
 
-		this.furniture = phaserGame.add.graphics(100, 100);
-	    
-	    // dibuja al mobiliario
-	    this.furniture.lineStyle(0);
-	    this.furniture.beginFill(0xEAD4A5, 1);
-	    this.furniture.drawCircle(this.posX, this.posY, 50);
-	    this.furniture.endFill();
+		// Guardamos el spriteLabel a usar
+		this.spriteLabel = spriteLabel;
 
-	    window.graphics = this.furniture;
+		// Creamos el mobiliario
+		this.createFurniture();
+	}
+
+	/**
+	* Método para crear el mobiliario
+	*/
+	DAFurniture.prototype.createFurniture = function() {
+		this.furniture = this.game.add.sprite(this.posX, this.posY, this.spriteLabel);
+		this.furniture.scale.setTo(2,2);
+
+		this.furniture.enableBody = true;
+		this.game.physics.arcade.enable(this.furniture);
 	}
 
 	return DAFurniture;

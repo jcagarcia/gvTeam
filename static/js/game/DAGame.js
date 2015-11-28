@@ -52,7 +52,10 @@ var DAGame = (function() {
 		this.game.load.spritesheet('char_developer_03', 'static/assets/images/characters/char_developer_03.png', 32, 48);
 
 		// Cargando objetos
-		this.game.load.spritesheet('door_1', 'static/assets/images/objects/door_1.jpg', 8, 34);
+		this.game.load.image('door_1', 'static/assets/images/objects/door_1.jpg', 8, 34);
+
+		// Cargando mobiliario
+		this.game.load.image('table', 'static/assets/images/furniture/table.png', 55, 41);
 	}
 
 	/**
@@ -75,7 +78,7 @@ var DAGame = (function() {
 		this.arrDevelopers.push(new DADeveloper(this.game, 300, 20, "char_developer_01"));
 
 		// Creamos el mobiliario
-		this.arrFurniture.push(new DAFurniture(this.game, 400, 100));
+		this.arrFurniture.push(new DAFurniture(this.game, 400, 100, "table"));
 	}
 
 	/**
