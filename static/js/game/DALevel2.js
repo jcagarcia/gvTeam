@@ -169,6 +169,18 @@ var DALevel2 = (function() {
 			var furniture = this.arrFurniture[i];
 			this.game.physics.arcade.collide(this.designer.getSprite(), furniture.getSprite());
 		}
+
+		// Añadiendo collide entre desarrolladores y desarrolladores
+		for(i in this.arrDevelopers) {
+			var currenDeveloper = this.arrDevelopers[i];
+			for(j in this.arrDevelopers){
+				var otherDeveloper = this.arrDevelopers[j];
+
+				if(j != i) {
+					this.game.physics.arcade.collide(currenDeveloper.getSprite(), otherDeveloper.getSprite());
+				}
+			}
+		}
 		
 		// Añadiendo collide entre los desarrolladores y el mobiliario
 		for(i in this.arrFurniture) {
